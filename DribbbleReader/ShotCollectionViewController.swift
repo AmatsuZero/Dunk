@@ -30,6 +30,7 @@ class ShotCollectionViewController: UICollectionViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
     }
     
     func loadShots(){
@@ -38,7 +39,7 @@ class ShotCollectionViewController: UICollectionViewController{
         cellWidth = self.view.bounds.width
         cellHeight = self.view.bounds.height / 2.5
         
-        self.collectionView?.register(UINib(nibName: "ShotCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: reuseIdentifier_Shot)
+        self.collectionView?.register(QuickLookCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier_Shot)
         
         DribbleObjectHandler.getShots(API_URL, callback: {(shots) -> Void in
             self.shots = shots
@@ -70,70 +71,23 @@ class ShotCollectionViewController: UICollectionViewController{
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier_Shot, for: indexPath) as! ShotCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier_Shot, for: indexPath) as! QuickLookCollectionViewCell
         
         let shot = shots[indexPath.row]
         
-        cell.imageView.sd_setImage(with: URL(string: shot.imageUrl)!)
-//        cell.imageView.layer.shadowColor = UIColor.blackColor().CGColor
-//        cell.imageView.layer.shadowOffset = CGSize(width: 0, height: 10)
-//        cell.imageView.layer.shadowOpacity = 0.8
-//        cell.imageView.layer.shadowRadius = 5
-        
-        cell.designerIcon.sd_setImage(with: URL(string: shot.avatarUrl)!)
-        cell.designerIcon.layer.cornerRadius = cell.designerIcon.bounds.width / 2
-        cell.designerIcon.layer.masksToBounds = true
-        
-        cell.shotName.text = shot.shotName
-        cell.designerName.text = shot.designerName
-        cell.viewLabel.text = String(shot.shotCount)
-        
+        cell.setContent(shot: shot)
         
         if shots.count - 1 == indexPath.row && shotPages < 5 {
             shotPages += 1
             print(shotPages)
             let url = API_URL + "&page=" + String(shotPages)
             DribbleObjectHandler.getShots(url, callback: {(shots) -> Void in
-//                self.shots = shots
                 
                 for shot in shots {
                     self.shots.append(shot)
                 }
             })
         }
-        
-//        cell.imageView.bounds = CGRectMake(0, 0, cellWidth, cellHeight)
-//        cell.imageView.frame = cell.imageView.bounds
-//        cell.imageView.contentMode = UIViewContentMode.ScaleAspectFill
-        
-        
-//        cell.animatedImageView.bounds = CGRectMake(0, 0, cellWidth, cellHeight)
-//        cell.animatedImageView.frame = cell.animatedImageView.bounds
-//        cell.animatedImageView.contentMode = UIViewContentMode.ScaleAspectFill
-        
-//        cell.contentView.backgroundColor = UIColor.yellowColor()
-        
-//        let imageLoadQueue = dispatch_queue_create("imageLoadQueue", nil)
-//        
-//        SDWebImageDownloader.sharedDownloader().downloadImageWithURL(
-//            NSURL(string: shot.imageUrl),
-//            options: SDWebImageDownloaderOptions.UseNSURLCache,
-//            progress: nil,
-//            completed: { (image: UIImage!, data: NSData!, error: NSError!, finished: Bool) -> Void in
-//                if finished {
-//                    dispatch_async(imageLoadQueue, {
-//                        let animatedImage = FLAnimatedImage(animatedGIFData: data)
-//                        if let animatedImage = animatedImage {
-//                            dispatch_async(dispatch_get_main_queue(), {
-//                                cell.animatedImageView.animatedImage = FLAnimatedImage(GIFData: data)
-//                            })
-//                        }
-//                    })
-//                }
-//                
-//        })
-        
-        //        DribbleObjectHandler.asyncLoadShotImage(shot, imageView: cell.imageView)
         
         return cell
     }
@@ -156,7 +110,7 @@ class ShotCollectionViewController: UICollectionViewController{
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let _ = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier_Shot, for: indexPath) as! ShotCollectionViewCell
+        let _ = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier_Shot, for: indexPath) as! QuickLookCollectionViewCell
         let shot = shots[indexPath.row]
         let vc = ImageModalViewController(nibName: "ImageModalViewController", bundle: nil)
 //        var vc = DetailViewController(nibName: "DetailViewController", bundle: nil)

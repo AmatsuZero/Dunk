@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		1B9EA0E933E66962FB801FD5 /* Pods_DribbbleReader.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A1D8367DFA4C7C07AB6FA50 /* Pods_DribbbleReader.framework */; };
+		3F23892B62A0989FACE96DA9 /* DJRoundCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F238811DDF1024D1708FDA0 /* DJRoundCorner.swift */; };
+		8068441C1E5AC0230092D526 /* QuickLookCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8068441B1E5AC0230092D526 /* QuickLookCollectionViewCell.swift */; };
 		9A0EBC311B0F4C10006FBD58 /* CAPSPageMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0EBC301B0F4C10006FBD58 /* CAPSPageMenu.swift */; };
 		9A0EBC331B0F4C80006FBD58 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0EBC321B0F4C80006FBD58 /* BaseViewController.swift */; };
 		9A0EBC381B0F59EC006FBD58 /* ShotCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0EBC361B0F59EC006FBD58 /* ShotCollectionViewController.swift */; };
@@ -30,8 +32,6 @@
 		9AF6AB921B08850700FD07E6 /* Shot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF6AB911B08850700FD07E6 /* Shot.swift */; };
 		9AF6AB951B0885FB00FD07E6 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF6AB941B0885FB00FD07E6 /* Utils.swift */; };
 		9AF6AB971B0888BE00FD07E6 /* HttpService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF6AB961B0888BE00FD07E6 /* HttpService.swift */; };
-		9AF6AB9B1B0892EF00FD07E6 /* ShotCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF6AB991B0892EF00FD07E6 /* ShotCollectionViewCell.swift */; };
-		9AF6AB9C1B0892EF00FD07E6 /* ShotCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AF6AB9A1B0892EF00FD07E6 /* ShotCollectionViewCell.xib */; };
 		D84485011BFC3F3A0057AD1C /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D84485001BFC3F3A0057AD1C /* Default-568h@2x.png */; };
 /* End PBXBuildFile section */
 
@@ -47,7 +47,9 @@
 
 /* Begin PBXFileReference section */
 		0FC12706310D3037BEAC44E3 /* Pods-DribbbleReader.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DribbbleReader.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DribbbleReader/Pods-DribbbleReader.debug.xcconfig"; sourceTree = "<group>"; };
+		3F238811DDF1024D1708FDA0 /* DJRoundCorner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DJRoundCorner.swift; sourceTree = "<group>"; };
 		4A1D8367DFA4C7C07AB6FA50 /* Pods_DribbbleReader.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DribbbleReader.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8068441B1E5AC0230092D526 /* QuickLookCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickLookCollectionViewCell.swift; sourceTree = "<group>"; };
 		83B26A4702BE88E94A65265A /* Pods-DribbbleReader.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DribbbleReader.release.xcconfig"; path = "Pods/Target Support Files/Pods-DribbbleReader/Pods-DribbbleReader.release.xcconfig"; sourceTree = "<group>"; };
 		9A0EBC301B0F4C10006FBD58 /* CAPSPageMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CAPSPageMenu.swift; sourceTree = "<group>"; };
 		9A0EBC321B0F4C80006FBD58 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
@@ -76,8 +78,6 @@
 		9AF6AB911B08850700FD07E6 /* Shot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shot.swift; sourceTree = "<group>"; };
 		9AF6AB941B0885FB00FD07E6 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		9AF6AB961B0888BE00FD07E6 /* HttpService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpService.swift; sourceTree = "<group>"; };
-		9AF6AB991B0892EF00FD07E6 /* ShotCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShotCollectionViewCell.swift; sourceTree = "<group>"; };
-		9AF6AB9A1B0892EF00FD07E6 /* ShotCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShotCollectionViewCell.xib; sourceTree = "<group>"; };
 		D84485001BFC3F3A0057AD1C /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -107,6 +107,14 @@
 				83B26A4702BE88E94A65265A /* Pods-DribbbleReader.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		3F2380230F3D29EDAC1D53AF /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				3F238811DDF1024D1708FDA0 /* DJRoundCorner.swift */,
+			);
+			path = Category;
 			sourceTree = "<group>";
 		};
 		9A1863781B08BD1F0061BBF4 /* Controller */ = {
@@ -169,6 +177,7 @@
 				9A1863771B08AA810061BBF4 /* DribbbleReader-Bridging-Header.h */,
 				9AF6AB621B0824C000FD07E6 /* Supporting Files */,
 				9A0EBC301B0F4C10006FBD58 /* CAPSPageMenu.swift */,
+				3F2380230F3D29EDAC1D53AF /* Category */,
 			);
 			path = DribbbleReader;
 			sourceTree = "<group>";
@@ -221,8 +230,7 @@
 		9AF6AB981B08927800FD07E6 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				9AF6AB991B0892EF00FD07E6 /* ShotCollectionViewCell.swift */,
-				9AF6AB9A1B0892EF00FD07E6 /* ShotCollectionViewCell.xib */,
+				8068441B1E5AC0230092D526 /* QuickLookCollectionViewCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -289,7 +297,7 @@
 				TargetAttributes = {
 					9AF6AB5E1B0824C000FD07E6 = {
 						CreatedOnToolsVersion = 6.3.1;
-						DevelopmentTeam = 2X396D2695;
+						DevelopmentTeam = FS4G5542ZM;
 						LastSwiftMigration = 0810;
 						ProvisioningStyle = Automatic;
 					};
@@ -325,7 +333,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				9A0EBC391B0F59EC006FBD58 /* ShotCollectionViewController.xib in Resources */,
-				9AF6AB9C1B0892EF00FD07E6 /* ShotCollectionViewCell.xib in Resources */,
 				D84485011BFC3F3A0057AD1C /* Default-568h@2x.png in Resources */,
 				9AF6AB6A1B0824C000FD07E6 /* Main.storyboard in Resources */,
 				9A5D45001B1F3248004A0639 /* DetailViewController.xib in Resources */,
@@ -402,17 +409,18 @@
 				9A0EBC381B0F59EC006FBD58 /* ShotCollectionViewController.swift in Sources */,
 				9A5D44FB1B1F1B82004A0639 /* WebViewController.swift in Sources */,
 				9A0EBC311B0F4C10006FBD58 /* CAPSPageMenu.swift in Sources */,
-				9AF6AB9B1B0892EF00FD07E6 /* ShotCollectionViewCell.swift in Sources */,
 				9AF6AB951B0885FB00FD07E6 /* Utils.swift in Sources */,
 				9A5D44FF1B1F3248004A0639 /* DetailViewController.swift in Sources */,
 				9ABB83431B19B9D300D699EB /* ImageModalViewController.swift in Sources */,
 				9AF6AB8E1B08849500FD07E6 /* DribbbleObjectHandler.swift in Sources */,
 				9A18637B1B08C32F0061BBF4 /* Color.swift in Sources */,
 				9AF6AB921B08850700FD07E6 /* Shot.swift in Sources */,
+				8068441C1E5AC0230092D526 /* QuickLookCollectionViewCell.swift in Sources */,
 				9AF6AB8A1B0881AE00FD07E6 /* Config.swift in Sources */,
 				9AF6AB651B0824C000FD07E6 /* AppDelegate.swift in Sources */,
 				9A0EBC331B0F4C80006FBD58 /* BaseViewController.swift in Sources */,
 				9AF6AB971B0888BE00FD07E6 /* HttpService.swift in Sources */,
+				3F23892B62A0989FACE96DA9 /* DJRoundCorner.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -555,7 +563,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Naoya Sugimoto (S8GGSYBVK5)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 2X396D2695;
+				DEVELOPMENT_TEAM = FS4G5542ZM;
 				INFOPLIST_FILE = DribbbleReader/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -576,7 +584,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Naoya Sugimoto (S8GGSYBVK5)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 2X396D2695;
+				DEVELOPMENT_TEAM = FS4G5542ZM;
 				INFOPLIST_FILE = DribbbleReader/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
