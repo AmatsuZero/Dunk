@@ -11,6 +11,7 @@ import SnapKit
 import SDWebImage
 
 class QuickLookCollectionViewCell: UICollectionViewCell {
+    
     var imageView: UIImageView! = UIImageView()
     var shotName: UILabel! = UILabel()
     var designerName: UILabel! = UILabel()
@@ -37,11 +38,12 @@ class QuickLookCollectionViewCell: UICollectionViewCell {
         
         //在设置依赖的时候，一定要确保依赖的视图已经添加
         self.contentView.addSubview(imageView)
+        imageView.contentMode = .scaleToFill
         imageView.snp.makeConstraints { (make) in
             make.top.equalToSuperview()
             make.left.equalToSuperview()
             make.right.equalToSuperview()
-            make.height.lessThanOrEqualToSuperview().offset(-50)
+            make.height.lessThanOrEqualTo(self.bounds.height - 51)
         }
         
         self.contentView.addSubview(segmentView)
@@ -108,7 +110,7 @@ class QuickLookCollectionViewCell: UICollectionViewCell {
         //这是SDWebImage与Swift不兼容的有一大罪恶，Bug至今未修复：http://stackoverflow.com/questions/38949214/ambiguous-use-of-sd-setimagewithplaceholderimagecompleted-with-swift-3
         imageView.sd_setImage(with: URL(string: shot.imageUrl), placeholderImage: UIImage(named: "sample"), options: SDWebImageOptions.retryFailed) { (image, error, type, url) in
         }
-        designerIcon.sd_setImage(with: URL(string: shot.imageUrl), placeholderImage: UIImage(named: "comment_profile_mars"), options: SDWebImageOptions.retryFailed) { (image, error, type, url) in
+        designerIcon.sd_setImage(with: URL(string: shot.avatarUrl), placeholderImage: UIImage(named: "comment_profile_mars"), options: SDWebImageOptions.retryFailed) { (image, error, type, url) in
     
         }
         

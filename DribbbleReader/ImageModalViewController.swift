@@ -32,9 +32,16 @@ class ImageModalViewController: UIViewController {
         shareWithActivityControllerVC(sender)
     }
     
-    func shareWithActivityControllerVC(_ sender: UIButton) {
+    func shareWithActivityControllerVC(_ sender: UIButton?) {
         let activityVC = UIActivityViewController(activityItems: [imageView.image!], applicationActivities: nil)
         activityVC.popoverPresentationController?.sourceView = sender
         self.present(activityVC, animated: true, completion: nil)
+    }
+    
+    @available(iOS 9.0, *)
+    override var previewActionItems: [UIPreviewActionItem] {
+        return [UIPreviewAction.init(title: "Share the Image", style: .default, handler: { (previewAction, peekController) in
+            (peekController as? ImageModalViewController)?.shareWithActivityControllerVC(nil)
+        })]
     }
 }

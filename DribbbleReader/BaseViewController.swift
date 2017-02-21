@@ -25,25 +25,25 @@ class BaseViewController: UIViewController {
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.isTranslucent = false
         
-        let popularShot = ShotCollectionViewController(nibName: "ShotCollectionViewController", bundle: nil)
+        let popularShot = QuickLookCollectionViewController()
         popularShot.title = "Popular"
         popularShot.API_URL = Config.POPULAR_URL
         popularShot.loadShots()
         controllerArray.append(popularShot)
         
-        let gifShot = ShotCollectionViewController(nibName: "ShotCollectionViewController", bundle: nil)
+        let gifShot = QuickLookCollectionViewController()
         gifShot.title = "GIFs"
         gifShot.API_URL = Config.GIF_URL
         gifShot.loadShots()
         controllerArray.append(gifShot)
         
-        let teamsShot = ShotCollectionViewController(nibName: "ShotCollectionViewController", bundle: nil)
+        let teamsShot = QuickLookCollectionViewController()
         teamsShot.title = "Teams"
         teamsShot.API_URL = Config.TEAMS_URL
         teamsShot.loadShots()
         controllerArray.append(teamsShot)
         
-        let reboundsShot = ShotCollectionViewController(nibName: "ShotCollectionViewController", bundle: nil)
+        let reboundsShot = QuickLookCollectionViewController()
         reboundsShot.title = "Rebounds"
         reboundsShot.API_URL = Config.REBOUNDS_URL
         reboundsShot.loadShots()
