@@ -9,8 +9,9 @@
 import UIKit
 import SnapKit
 import SDWebImage
+import MBProgressHUD
 
-class QuickLookCollectionViewCell: UICollectionViewCell {
+class QuickLookCollectionViewCell: UICollectionViewCell, MBProgressHUDDelegate {
     
     var imageView: UIImageView! = UIImageView()
     var shotName: UILabel! = UILabel()
@@ -29,7 +30,6 @@ class QuickLookCollectionViewCell: UICollectionViewCell {
     //必须要实现
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
         //设置子视图
         self.setUpSubViews()
     }
@@ -38,7 +38,7 @@ class QuickLookCollectionViewCell: UICollectionViewCell {
         
         //在设置依赖的时候，一定要确保依赖的视图已经添加
         self.contentView.addSubview(imageView)
-        imageView.contentMode = .scaleToFill
+        imageView.contentMode = .scaleAspectFit
         imageView.snp.makeConstraints { (make) in
             make.top.equalToSuperview()
             make.left.equalToSuperview()
@@ -106,10 +106,24 @@ class QuickLookCollectionViewCell: UICollectionViewCell {
     }
     
     func setContent(shot: Shot)  {
-   
+        
+        //创建进度HUD
+        let bigImgHUD = MBProgressHUD.showAdded(to: imageView, animated: true)
+        bigImgHUD.bezelView.color = UIColor.clear
+        bigImgHUD.label.text = "Loading..."
+        bigImgHUD.backgroundView.style = .blur
+        bigImgHUD.delegate = self
+        
         //这是SDWebImage与Swift不兼容的有一大罪恶，Bug至今未修复：http://stackoverflow.com/questions/38949214/ambiguous-use-of-sd-setimagewithplaceholderimagecompleted-with-swift-3
-        imageView.sd_setImage(with: URL(string: shot.imageUrl), placeholderImage: UIImage(named: "sample"), options: SDWebImageOptions.retryFailed) { (image, error, type, url) in
+        
+        //创建透明色占位图
+        let placeHolderImage = UIColor.clear.convertToImage(rect: CGRect.init(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 216))
+        imageView.sd_setImage(with: URL(string: shot.imageUrl), placeholderImage: placeHolderImage!, options: SDWebImageOptions.retryFailed) { (image, error, type, url) in
+            DispatchQueue.main.async {
+                bigImgHUD.hide(animated: true)
+            }
         }
+        
         designerIcon.sd_setImage(with: URL(string: shot.avatarUrl), placeholderImage: UIImage(named: "comment_profile_mars"), options: SDWebImageOptions.retryFailed) { (image, error, type, url) in
     
         }
@@ -123,5 +137,12 @@ class QuickLookCollectionViewCell: UICollectionViewCell {
         
         //这一步一定要在最后做，确保遮罩在最上面
         self.contentView.dj_addCorner(radius: 3)
+    }
+    
+    func hudWasHidden(_ hud: MBProgressHUD) {
+        if !hud.isHidden {
+            //MBProgreHUD有相当高的概率移除失败，这里判断一下，如果没有隐藏，用MBProgressHUD提供的类方法隐藏一下
+            MBProgressHUD.hide(for: imageView, animated: true)
+        }
     }
 }

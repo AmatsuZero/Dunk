@@ -1,5 +1,6 @@
 PODS:
   - FLAnimatedImage (1.0.8)
+  - MBProgressHUD (1.0.0)
   - SDWebImage (3.7.3):
     - SDWebImage/Core (= 3.7.3)
   - SDWebImage/Core (3.7.3)
@@ -7,14 +8,16 @@ PODS:
 
 DEPENDENCIES:
   - FLAnimatedImage (~> 1.0)
+  - MBProgressHUD (~> 1.0.0)
   - SDWebImage
   - SnapKit (~> 3.2.0)
 
 SPEC CHECKSUMS:
   FLAnimatedImage: f9422f796135aff80d8c00b2afc48015bb746e24
+  MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   SDWebImage: 1d2b1a1efda1ade1b00b6f8498865f8ddedc8a84
   SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
 
-PODFILE CHECKSUM: 3b5bb257864bd4828c51016f0d5b0d2c703f5773
+PODFILE CHECKSUM: 52c8691703e6725927029a6d9c9c5effb1fec9f2
 
 COCOAPODS: 1.2.0

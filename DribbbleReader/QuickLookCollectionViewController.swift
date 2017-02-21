@@ -25,6 +25,8 @@ class QuickLookCollectionViewController: UICollectionViewController, UIViewContr
     var API_URL = Config.SHOT_URL
 
     var shotPages = 1
+    
+    var currentImg: UIImage?
 
     required init?(coder aDecoder: NSCoder) {
         //必须
@@ -109,7 +111,6 @@ class QuickLookCollectionViewController: UICollectionViewController, UIViewContr
             print(shotPages)
             let url = API_URL + "&page=" + String(shotPages)
             DribbleObjectHandler.getShots(url, callback: {(shots) -> Void in
-
                 for shot in shots {
                     self.shots.append(shot)
                 }
@@ -142,25 +143,14 @@ class QuickLookCollectionViewController: UICollectionViewController, UIViewContr
         parent?.present(vc, animated: true, completion: nil)
     }
     
-    func prepareForDisplay(_ shot: Shot) -> ImageModalViewController {
-        let vc = ImageModalViewController(nibName: "ImageModalViewController", bundle: nil)
+    func prepareForDisplay(_ shot: Shot, _ forPeek:Bool = false) -> LightLoomViewController {
+        let vc = LightLoomViewController(fromPeek:forPeek)
         vc.modalPresentationStyle = .fullScreen
         vc.modalTransitionStyle = .crossDissolve
+        vc.imageUrl = shot.imageUrl
         vc.pageUrl = shot.htmlUrl
         vc.shotName = shot.shotName
         vc.designerName = shot.designerName
-        let downloadQueue = DispatchQueue(label: "com.naoyashiga.processdownload", attributes: [])
-        downloadQueue.async {
-            let data = try? Data(contentsOf: URL(string: shot.imageUrl)!)
-            var image: UIImage?
-            if data != nil {
-                shot.imageData = data
-                image = UIImage(data: data!)!
-            }
-            DispatchQueue.main.async {
-                vc.imageView.image = image
-            }
-        }
         return vc
     }
 
@@ -171,10 +161,21 @@ class QuickLookCollectionViewController: UICollectionViewController, UIViewContr
             return nil
         }
         let shot = shots[(index?.row)!]
-        return prepareForDisplay(shot)
+        let vc = prepareForDisplay(shot, true)
+        currentImg = vc.imageView.image
+        return vc
     }
     
     func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
-       show(viewControllerToCommit, sender: self)
+        let vc = viewControllerToCommit as! LightLoomViewController
+        let item = UIBarButtonItem.init(title: "Share", style: .plain, target: self, action: #selector(share))
+        vc.navigationItem.rightBarButtonItem = item
+        show(vc, sender: self)
+    }
+    
+    func share() {
+        let activityVC = UIActivityViewController(activityItems: [currentImg!], applicationActivities: nil)
+        self.present(activityVC, animated: true, completion: nil)
+
     }
 }

@@ -60,4 +60,16 @@ extension UIColor {
     class func cellLabelColor() -> UIColor {
         return UIColor.hexStr("546E7A", alpha: 1)
     }
+    
+    func convertToImage(rect:CGRect) -> UIImage? {
+        UIGraphicsBeginImageContext(rect.size)
+        if let ctx = UIGraphicsGetCurrentContext() {
+            ctx.setFillColor(self.cgColor)
+            ctx.fill(rect)
+            let img = UIGraphicsGetImageFromCurrentImageContext()
+            UIGraphicsEndImageContext()
+            return img
+        }
+        return nil
+    }
 }

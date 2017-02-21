@@ -12,15 +12,10 @@
 		8068441C1E5AC0230092D526 /* QuickLookCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8068441B1E5AC0230092D526 /* QuickLookCollectionViewCell.swift */; };
 		8069CCEC1E5BD13500F50D40 /* QuickLookCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8069CCEB1E5BD13500F50D40 /* QuickLookCollectionViewController.swift */; };
 		8069CCEE1E5C094C00F50D40 /* Dispatch_Once.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8069CCED1E5C094C00F50D40 /* Dispatch_Once.swift */; };
+		8069CCF01E5C292900F50D40 /* LightLoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8069CCEF1E5C292900F50D40 /* LightLoomViewController.swift */; };
 		9A0EBC311B0F4C10006FBD58 /* CAPSPageMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0EBC301B0F4C10006FBD58 /* CAPSPageMenu.swift */; };
 		9A0EBC331B0F4C80006FBD58 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0EBC321B0F4C80006FBD58 /* BaseViewController.swift */; };
 		9A18637B1B08C32F0061BBF4 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A18637A1B08C32F0061BBF4 /* Color.swift */; };
-		9A5D44FB1B1F1B82004A0639 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A5D44F91B1F1B82004A0639 /* WebViewController.swift */; };
-		9A5D44FC1B1F1B82004A0639 /* WebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A5D44FA1B1F1B82004A0639 /* WebViewController.xib */; };
-		9A5D44FF1B1F3248004A0639 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A5D44FD1B1F3248004A0639 /* DetailViewController.swift */; };
-		9A5D45001B1F3248004A0639 /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A5D44FE1B1F3248004A0639 /* DetailViewController.xib */; };
-		9ABB83431B19B9D300D699EB /* ImageModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ABB83411B19B9D300D699EB /* ImageModalViewController.swift */; };
-		9ABB83441B19B9D300D699EB /* ImageModalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9ABB83421B19B9D300D699EB /* ImageModalViewController.xib */; };
 		9AF6AB651B0824C000FD07E6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF6AB641B0824C000FD07E6 /* AppDelegate.swift */; };
 		9AF6AB6A1B0824C000FD07E6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9AF6AB681B0824C000FD07E6 /* Main.storyboard */; };
 		9AF6AB6C1B0824C000FD07E6 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9AF6AB6B1B0824C000FD07E6 /* Images.xcassets */; };
@@ -52,17 +47,12 @@
 		8068441B1E5AC0230092D526 /* QuickLookCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickLookCollectionViewCell.swift; sourceTree = "<group>"; };
 		8069CCEB1E5BD13500F50D40 /* QuickLookCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickLookCollectionViewController.swift; sourceTree = "<group>"; };
 		8069CCED1E5C094C00F50D40 /* Dispatch_Once.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dispatch_Once.swift; sourceTree = "<group>"; };
+		8069CCEF1E5C292900F50D40 /* LightLoomViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LightLoomViewController.swift; sourceTree = "<group>"; };
 		83B26A4702BE88E94A65265A /* Pods-DribbbleReader.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DribbbleReader.release.xcconfig"; path = "Pods/Target Support Files/Pods-DribbbleReader/Pods-DribbbleReader.release.xcconfig"; sourceTree = "<group>"; };
 		9A0EBC301B0F4C10006FBD58 /* CAPSPageMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CAPSPageMenu.swift; sourceTree = "<group>"; };
 		9A0EBC321B0F4C80006FBD58 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		9A1863771B08AA810061BBF4 /* DribbbleReader-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DribbbleReader-Bridging-Header.h"; sourceTree = "<group>"; };
 		9A18637A1B08C32F0061BBF4 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
-		9A5D44F91B1F1B82004A0639 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
-		9A5D44FA1B1F1B82004A0639 /* WebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WebViewController.xib; sourceTree = "<group>"; };
-		9A5D44FD1B1F3248004A0639 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
-		9A5D44FE1B1F3248004A0639 /* DetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = "<group>"; };
-		9ABB83411B19B9D300D699EB /* ImageModalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageModalViewController.swift; sourceTree = "<group>"; };
-		9ABB83421B19B9D300D699EB /* ImageModalViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageModalViewController.xib; sourceTree = "<group>"; };
 		9AF6AB5F1B0824C000FD07E6 /* DribbbleReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DribbbleReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9AF6AB631B0824C000FD07E6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9AF6AB641B0824C000FD07E6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -122,13 +112,8 @@
 			isa = PBXGroup;
 			children = (
 				8069CCEB1E5BD13500F50D40 /* QuickLookCollectionViewController.swift */,
-				9ABB83411B19B9D300D699EB /* ImageModalViewController.swift */,
-				9ABB83421B19B9D300D699EB /* ImageModalViewController.xib */,
-				9A5D44F91B1F1B82004A0639 /* WebViewController.swift */,
-				9A5D44FA1B1F1B82004A0639 /* WebViewController.xib */,
+				8069CCEF1E5C292900F50D40 /* LightLoomViewController.swift */,
 				9A0EBC321B0F4C80006FBD58 /* BaseViewController.swift */,
-				9A5D44FD1B1F3248004A0639 /* DetailViewController.swift */,
-				9A5D44FE1B1F3248004A0639 /* DetailViewController.xib */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -334,10 +319,7 @@
 			files = (
 				D84485011BFC3F3A0057AD1C /* Default-568h@2x.png in Resources */,
 				9AF6AB6A1B0824C000FD07E6 /* Main.storyboard in Resources */,
-				9A5D45001B1F3248004A0639 /* DetailViewController.xib in Resources */,
-				9A5D44FC1B1F1B82004A0639 /* WebViewController.xib in Resources */,
 				9AF6AB6F1B0824C000FD07E6 /* LaunchScreen.xib in Resources */,
-				9ABB83441B19B9D300D699EB /* ImageModalViewController.xib in Resources */,
 				9AF6AB6C1B0824C000FD07E6 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -405,12 +387,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				9AF6AB901B0884C800FD07E6 /* DribbbleBase.swift in Sources */,
+				8069CCF01E5C292900F50D40 /* LightLoomViewController.swift in Sources */,
 				8069CCEE1E5C094C00F50D40 /* Dispatch_Once.swift in Sources */,
-				9A5D44FB1B1F1B82004A0639 /* WebViewController.swift in Sources */,
 				9A0EBC311B0F4C10006FBD58 /* CAPSPageMenu.swift in Sources */,
 				9AF6AB951B0885FB00FD07E6 /* Utils.swift in Sources */,
-				9A5D44FF1B1F3248004A0639 /* DetailViewController.swift in Sources */,
-				9ABB83431B19B9D300D699EB /* ImageModalViewController.swift in Sources */,
 				9AF6AB8E1B08849500FD07E6 /* DribbbleObjectHandler.swift in Sources */,
 				9A18637B1B08C32F0061BBF4 /* Color.swift in Sources */,
 				9AF6AB921B08850700FD07E6 /* Shot.swift in Sources */,
