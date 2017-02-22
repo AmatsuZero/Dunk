@@ -110,24 +110,28 @@ class QuickLookCollectionViewCell: UICollectionViewCell, MBProgressHUDDelegate {
         //创建进度HUD
         let bigImgHUD = MBProgressHUD.showAdded(to: imageView, animated: true)
         bigImgHUD.bezelView.color = UIColor.clear
-        bigImgHUD.label.text = "Loading..."
+        bigImgHUD.mode = .annularDeterminate
+        bigImgHUD.animationType = .zoom
+        bigImgHUD.label.text = "Loading...".getLocalizedString()
         bigImgHUD.backgroundView.style = .blur
         bigImgHUD.delegate = self
-        
         //这是SDWebImage与Swift不兼容的有一大罪恶，Bug至今未修复：http://stackoverflow.com/questions/38949214/ambiguous-use-of-sd-setimagewithplaceholderimagecompleted-with-swift-3
-        
         //创建透明色占位图
         let placeHolderImage = UIColor.clear.convertToImage(rect: CGRect.init(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 216))
-        imageView.sd_setImage(with: URL(string: shot.imageUrl), placeholderImage: placeHolderImage!, options: SDWebImageOptions.retryFailed) { (image, error, type, url) in
+        imageView.sd_setImage(with: URL(string: shot.imageUrl), placeholderImage: placeHolderImage!, options: [.retryFailed, .refreshCached], progress: { (receivedSize:Int, expectedSize:Int, url:URL?) in
+            DispatchQueue.main.async {//在子线程，需要回到主线程
+                if expectedSize != -1 && receivedSize != 0 {
+                    //由于Swift的类型转化原因，直接整数相除再转为Float类型，值还是0。要两个Float类型相除，才能得到期望的值
+                    bigImgHUD.progress = Float(receivedSize)/Float(expectedSize)
+                }
+            }
+        })
+        { (_, _, _, _) in
             DispatchQueue.main.async {
                 bigImgHUD.hide(animated: true)
             }
         }
-        
-        designerIcon.sd_setImage(with: URL(string: shot.avatarUrl), placeholderImage: UIImage(named: "comment_profile_mars"), options: SDWebImageOptions.retryFailed) { (image, error, type, url) in
-    
-        }
-        
+        designerIcon.sd_setImage(with: URL(string: shot.avatarUrl), placeholderImage: UIImage(named: "comment_profile_mars"), options: [.refreshCached])
         designerIcon.dj_addCorner(radius: designerIcon.bounds.width / 2)
         shotName.text = shot.shotName
         designerName.text = shot.designerName

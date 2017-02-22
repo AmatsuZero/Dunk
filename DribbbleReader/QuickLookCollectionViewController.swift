@@ -7,13 +7,17 @@
 //
 
 import UIKit
+import MBProgressHUD
 
 private let reuseIdentifier = "QucikLookCollectionViewCell"
 
-class QuickLookCollectionViewController: UICollectionViewController, UIViewControllerPreviewingDelegate {
+class QuickLookCollectionViewController: UICollectionViewController, UIViewControllerPreviewingDelegate, MBProgressHUDDelegate {
 
     fileprivate var shots:[Shot] = [Shot]() {
-        didSet { self.collectionView?.reloadData() }
+        didSet {
+            self.collectionView?.reloadData()
+            loadingHUD?.hide(animated: true)
+        }
     }
 
     fileprivate var cellWidth:CGFloat = 0.0
@@ -27,6 +31,8 @@ class QuickLookCollectionViewController: UICollectionViewController, UIViewContr
     var shotPages = 1
     
     var currentImg: UIImage?
+    
+    var loadingHUD: MBProgressHUD?
 
     required init?(coder aDecoder: NSCoder) {
         //必须
@@ -47,6 +53,16 @@ class QuickLookCollectionViewController: UICollectionViewController, UIViewContr
         // Register cell classes
         self.collectionView!.register(QuickLookCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         // Do any additional setup after loading the view.
+        //添加背景进度条
+        loadingHUD = MBProgressHUD.showAdded(to: collectionView!, animated: true)
+        loadingHUD?.bezelView.color = UIColor.clear
+        loadingHUD?.mode = .indeterminate
+        loadingHUD?.animationType = .fade
+        loadingHUD?.label.text = "Loading...".getLocalizedString()
+        loadingHUD?.backgroundView.style = .blur
+        loadingHUD?.delegate = self
+        
+        loadingHUD?.show(animated: true)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -168,7 +184,7 @@ class QuickLookCollectionViewController: UICollectionViewController, UIViewContr
     
     func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
         let vc = viewControllerToCommit as! LightLoomViewController
-        let item = UIBarButtonItem.init(title: "Share", style: .plain, target: self, action: #selector(share))
+        let item = UIBarButtonItem.init(title: "Share".getLocalizedString(), style: .plain, target: self, action: #selector(share))
         vc.navigationItem.rightBarButtonItem = item
         show(vc, sender: self)
     }

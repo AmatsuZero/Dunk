@@ -9,6 +9,7 @@
 import UIKit
 import SnapKit
 import SDWebImage
+import MBProgressHUD
 
 class LightLoomViewController: UIViewController {
     var parentNavigationController = UINavigationController()
@@ -21,9 +22,14 @@ class LightLoomViewController: UIViewController {
     var imageUrl: String = "" {
         didSet {
             //创建透明色占位图
-            let placeHolderImage = UIColor.red.convertToImage(rect: CGRect.init(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 300))
+            let placeHolderImage = UIColor.clear.convertToImage(rect: CGRect.init(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 300))
+            let hud = MBProgressHUD.showAdded(to: imageView, animated: true)
+            hud.bezelView.color = UIColor.clear
+            hud.label.text = "Loading...".getLocalizedString()
+            hud.backgroundView.style = .blur
+            hud.show(animated: true)
             imageView.sd_setImage(with: URL(string: imageUrl), placeholderImage: placeHolderImage, options: SDWebImageOptions.retryFailed) { (image, error, type, url) in
-                
+                hud.hide(animated: true)
             }
         }
     }
@@ -60,7 +66,7 @@ class LightLoomViewController: UIViewController {
         }
         
         if !isForPeek {
-            shareButton.setTitle("Share Image", for: .normal)
+            shareButton.setTitle("Share Image".getLocalizedString(), for: .normal)
             shareButton.titleLabel?.font = UIFont.systemFont(ofSize: 15)
             shareButton.addTarget(self, action: #selector(shareWithActivityControllerVC(_:)), for: .touchUpInside)
             self.view.addSubview(shareButton)
@@ -68,7 +74,7 @@ class LightLoomViewController: UIViewController {
                 make.width.equalTo(87)
                 make.height.equalTo(30)
                 make.top.equalTo(imageView.snp.bottom).offset(57)
-                make.right.equalToSuperview().offset(-20)
+                make.centerX.equalToSuperview()
             }
         }
     }
@@ -86,7 +92,7 @@ class LightLoomViewController: UIViewController {
     
     @available(iOS 9.0, *)
     override var previewActionItems: [UIPreviewActionItem] {
-        return [UIPreviewAction.init(title: "Share the Image", style: .default, handler: { (previewAction, peekController) in
+        return [UIPreviewAction.init(title: "Share Image".getLocalizedString(), style: .default, handler: { (previewAction, peekController) in
             (peekController as? LightLoomViewController)?.shareWithActivityControllerVC(nil)
         })]
     }

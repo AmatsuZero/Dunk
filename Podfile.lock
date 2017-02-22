@@ -1,23 +1,26 @@
 PODS:
-  - FLAnimatedImage (1.0.8)
+  - Alamofire (4.3.0)
+  - FLAnimatedImage (1.0.12)
   - MBProgressHUD (1.0.0)
-  - SDWebImage (3.7.3):
-    - SDWebImage/Core (= 3.7.3)
-  - SDWebImage/Core (3.7.3)
+  - SDWebImage (4.0.0):
+    - SDWebImage/Core (= 4.0.0)
+  - SDWebImage/Core (4.0.0)
   - SnapKit (3.2.0)
 
 DEPENDENCIES:
+  - Alamofire (~> 4.3)
   - FLAnimatedImage (~> 1.0)
   - MBProgressHUD (~> 1.0.0)
   - SDWebImage
   - SnapKit (~> 3.2.0)
 
 SPEC CHECKSUMS:
-  FLAnimatedImage: f9422f796135aff80d8c00b2afc48015bb746e24
+  Alamofire: 856a113053a7bc9cbe5d6367a555d773fc5cfef7
+  FLAnimatedImage: 4a0b56255d9b05f18b6dd7ee06871be5d3b89e31
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
-  SDWebImage: 1d2b1a1efda1ade1b00b6f8498865f8ddedc8a84
+  SDWebImage: 76a6348bdc74eb5a55dd08a091ef298e56b55e41
   SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
 
-PODFILE CHECKSUM: 52c8691703e6725927029a6d9c9c5effb1fec9f2
+PODFILE CHECKSUM: fe39dd804d4bfb353fb27812e356c977928afb9a
 
 COCOAPODS: 1.2.0

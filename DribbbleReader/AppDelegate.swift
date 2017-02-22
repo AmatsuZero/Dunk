@@ -24,13 +24,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        UINavigationBar.appearance().shadowImage = UIImage()
         // Sets the translucent background color
 //        UINavigationBar.appearance().backgroundColor = UIColor.navigationBarBackgroundColor()
+        
+        //Setup root controller
+        window = UIWindow.init(frame: UIScreen.main.bounds)
+        window?.rootViewController = UINavigationController.init(rootViewController: BaseViewController())
+        window?.makeKeyAndVisible()
 
         UIApplication.shared.setStatusBarStyle(.lightContent, animated: false)
 
         //add 3D Touch Share
         if #available(iOS 9.0, *) {
             let share: UIApplicationShortcutIcon = UIApplicationShortcutIcon.init(type: .share)
-            let shareLink: UIApplicationShortcutItem = UIApplicationShortcutItem.init(type: "share", localizedTitle: "分享", localizedSubtitle: "分享此应用", icon: share, userInfo: ["AppStoreLink":"https://itunes.apple.com/us/app/dunk-for-dribbble/id1003028105?mt=8"])
+            let shareLink: UIApplicationShortcutItem = UIApplicationShortcutItem.init(type: "share", localizedTitle: "Share".getLocalizedString(), localizedSubtitle: "Share This App".getLocalizedString(), icon: share, userInfo: ["AppStoreLink":"https://itunes.apple.com/us/app/dunk-for-dribbble/id1003028105?mt=8"])
             UIApplication.shared.shortcutItems = [shareLink]
         } else {
             // Fallback on earlier versions

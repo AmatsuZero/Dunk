@@ -21,3 +21,9 @@ open class Utils {
         return ""
     }
 }
+
+extension String {
+    func getLocalizedString() -> String {
+        return NSLocalizedString(self, comment: "")
+    }
+}

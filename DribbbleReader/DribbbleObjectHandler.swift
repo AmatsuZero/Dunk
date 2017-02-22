@@ -14,20 +14,14 @@ class DribbleObjectHandler {
     
     class func asyncLoadShotImage(_ shot: Shot, imageView: UIImageView){
         let downloadQueue = DispatchQueue(label: "com.naoyashiga.processdownload", attributes: [])
-        
         downloadQueue.async{
             let data = try? Data(contentsOf: URL(string: shot.imageUrl)!)
             
             var image: UIImage?
-//            var sdImageView: UIImageView?
-          
             if data != nil {
                 shot.imageData = data
                 image = UIImage(data: data!)!
             }
-            
-//            imageView.sd_setImageWithURL(NSURL(string: shot.imageUrl)!)
-            
             DispatchQueue.main.async{
                 imageView.image = image
             }
@@ -39,7 +33,6 @@ class DribbleObjectHandler {
         let url = url + "&access_token=" + Config.ACCESS_TOKEN
         
         HttpService.getJSON(url){ (jsonData) -> Void in
-            
             for shotData in jsonData {
                 let shot = Shot(data: shotData as! NSDictionary)
                 shots.append(shot)

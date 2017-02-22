@@ -7,6 +7,7 @@ def pods
 
 pod 'SDWebImage'
 pod 'FLAnimatedImage', '~> 1.0'
+pod 'Alamofire', '~> 4.3'
 
 end
 
