@@ -25,6 +25,10 @@ extension UIColor {
         }
     }
     
+    class func borderColor() -> UIColor {
+        return UIColor.hexStr("183937", alpha: 0.8)
+    }
+    
     class func navigationBarTitleTextColor() -> UIColor {
         return UIColor.hexStr("ffffff", alpha: 1)
     }

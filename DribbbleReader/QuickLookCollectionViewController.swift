@@ -20,8 +20,8 @@ class QuickLookCollectionViewController: UICollectionViewController, UIViewContr
         }
     }
 
-    fileprivate var cellWidth:CGFloat = 0.0
-    fileprivate var cellHeight:CGFloat = 0.0
+    fileprivate let cellWidth:CGFloat = UIScreen.main.bounds.width
+    fileprivate let cellHeight:CGFloat = UIScreen.main.bounds.height / 2.5
 
     fileprivate let cellVerticalMargin:CGFloat = 20.0
     fileprivate let cellHorizontalMargin:CGFloat = 20.0
@@ -40,8 +40,7 @@ class QuickLookCollectionViewController: UICollectionViewController, UIViewContr
     }
     
     init() {
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .vertical
+        let layout = CustomCollectionViewFlowLayout()
         //必须调用指定构造器
         super.init(collectionViewLayout: layout)
     }
@@ -79,9 +78,6 @@ class QuickLookCollectionViewController: UICollectionViewController, UIViewContr
     func loadShots(){
         self.collectionView!.backgroundColor = UIColor.hexStr("f5f5f5", alpha: 1.0)
 
-        cellWidth = self.view.bounds.width
-        cellHeight = self.view.bounds.height / 2.5
-
         DribbleObjectHandler.getShots(API_URL, callback: {(shots) -> Void in
             self.shots = shots
         })
@@ -92,6 +88,7 @@ class QuickLookCollectionViewController: UICollectionViewController, UIViewContr
     }
 
     func refreshInvoked(_ sender:AnyObject) {
+        collectionView?.collectionViewLayout = CircularCollectionViewLayout()
         sender.beginRefreshing()
         collectionView?.reloadData()
         sender.endRefreshing()
@@ -116,47 +113,19 @@ class QuickLookCollectionViewController: UICollectionViewController, UIViewContr
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! QuickLookCollectionViewCell
-
         let shot = shots[indexPath.row]
-
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! QuickLookCollectionViewCell
         cell.setContent(shot: shot)
-
         if shots.count - 1 == indexPath.row && shotPages < 5 {
-            shotPages += 1
-            print(shotPages)
-            let url = API_URL + "&page=" + String(shotPages)
-            DribbleObjectHandler.getShots(url, callback: {(shots) -> Void in
+           shotPages += 1
+           let url = API_URL + "&page=" + String(shotPages)
+           DribbleObjectHandler.getShots(url, callback: {(shots) -> Void in
                 for shot in shots {
                     self.shots.append(shot)
                 }
-            })
+           })
         }
         return cell
-    }
-
-    // MARK: UICollectionViewDelegate
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: IndexPath) -> CGSize {
-        return CGSize(width: cellWidth - cellHorizontalMargin, height: cellHeight)
-    }
-
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
-        return cellVerticalMargin
-    }
-
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAtIndex section: Int) -> CGFloat {
-        return 0.0
-    }
-
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 10.0, left: 10.0, bottom: 10.0, right: 10.0)
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let _ = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! QuickLookCollectionViewCell
-        let shot = shots[indexPath.row]
-        let vc = self.prepareForDisplay(shot)
-        parent?.present(vc, animated: true, completion: nil)
     }
     
     func prepareForDisplay(_ shot: Shot, _ forPeek:Bool = false) -> LightLoomViewController {
@@ -168,6 +137,38 @@ class QuickLookCollectionViewController: UICollectionViewController, UIViewContr
         vc.shotName = shot.shotName
         vc.designerName = shot.designerName
         return vc
+    }
+    
+    // MARK: UICollectionViewDelegate
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: IndexPath) -> CGSize {
+        switch collectionViewLayout.self {
+            default:
+                return CGSize(width: cellWidth - cellHorizontalMargin, height: cellHeight)
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
+        return cellVerticalMargin
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAtIndex section: Int) -> CGFloat {
+        return 0.0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
+        switch collectionViewLayout.self {
+            case is CustomCollectionViewFlowLayout:
+                return UIEdgeInsets(top: 10.0, left: 10.0, bottom: 10.0, right: 10.0)
+            default:
+                return UIEdgeInsetsMake(0, 0, 0, 0)
+        }
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let _ = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! QuickLookCollectionViewCell
+        let shot = shots[indexPath.row]
+        let vc = self.prepareForDisplay(shot)
+        parent?.present(vc, animated: true, completion: nil)
     }
 
     // MARK: Peep&Pop

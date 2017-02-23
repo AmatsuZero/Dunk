@@ -39,9 +39,8 @@ class DribbleObjectHandler {
             }
           
           DispatchQueue.main.async(){
-                    callback(shots)
+                callback(shots)
           }
-          
         }
     }
 }

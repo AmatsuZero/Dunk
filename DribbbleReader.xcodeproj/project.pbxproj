@@ -10,6 +10,10 @@
 		1B9EA0E933E66962FB801FD5 /* Pods_DribbbleReader.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A1D8367DFA4C7C07AB6FA50 /* Pods_DribbbleReader.framework */; };
 		3F23892B62A0989FACE96DA9 /* DJRoundCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F238811DDF1024D1708FDA0 /* DJRoundCorner.swift */; };
 		806260E71E5D19A7001F6256 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 806260E91E5D19A7001F6256 /* Localizable.strings */; };
+		806260EE1E5D3BFE001F6256 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 806260F01E5D3BFE001F6256 /* InfoPlist.strings */; };
+		806260F81E5D5AE6001F6256 /* CustomCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806260F71E5D5AE6001F6256 /* CustomCollectionViewFlowLayout.swift */; };
+		8062610B1E5D78B4001F6256 /* GradientSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8062610A1E5D78B4001F6256 /* GradientSwitch.swift */; };
+		8062610C1E5D80E1001F6256 /* CircularCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806260F51E5D3F88001F6256 /* CircularCollectionViewLayout.swift */; };
 		8068441C1E5AC0230092D526 /* QuickLookCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8068441B1E5AC0230092D526 /* QuickLookCollectionViewCell.swift */; };
 		8069CCEC1E5BD13500F50D40 /* QuickLookCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8069CCEB1E5BD13500F50D40 /* QuickLookCollectionViewController.swift */; };
 		8069CCEE1E5C094C00F50D40 /* Dispatch_Once.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8069CCED1E5C094C00F50D40 /* Dispatch_Once.swift */; };
@@ -48,6 +52,12 @@
 		806260E81E5D19A7001F6256 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		806260EA1E5D19B2001F6256 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		806260EB1E5D19B7001F6256 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		806260EF1E5D3BFE001F6256 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		806260F11E5D3C09001F6256 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		806260F21E5D3C0A001F6256 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		806260F51E5D3F88001F6256 /* CircularCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircularCollectionViewLayout.swift; sourceTree = "<group>"; };
+		806260F71E5D5AE6001F6256 /* CustomCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
+		8062610A1E5D78B4001F6256 /* GradientSwitch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientSwitch.swift; sourceTree = "<group>"; };
 		8068441B1E5AC0230092D526 /* QuickLookCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickLookCollectionViewCell.swift; sourceTree = "<group>"; };
 		8069CCEB1E5BD13500F50D40 /* QuickLookCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickLookCollectionViewController.swift; sourceTree = "<group>"; };
 		8069CCED1E5C094C00F50D40 /* Dispatch_Once.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dispatch_Once.swift; sourceTree = "<group>"; };
@@ -111,6 +121,14 @@
 			path = Category;
 			sourceTree = "<group>";
 		};
+		3F23854F658CFD38BFF03498 /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				8062610A1E5D78B4001F6256 /* GradientSwitch.swift */,
+			);
+			path = Component;
+			sourceTree = "<group>";
+		};
 		9A1863781B08BD1F0061BBF4 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -165,6 +183,7 @@
 				9AF6AB621B0824C000FD07E6 /* Supporting Files */,
 				9A0EBC301B0F4C10006FBD58 /* CAPSPageMenu.swift */,
 				3F2380230F3D29EDAC1D53AF /* Category */,
+				3F23854F658CFD38BFF03498 /* Component */,
 			);
 			path = DribbbleReader;
 			sourceTree = "<group>";
@@ -173,6 +192,7 @@
 			isa = PBXGroup;
 			children = (
 				9AF6AB631B0824C000FD07E6 /* Info.plist */,
+				806260F01E5D3BFE001F6256 /* InfoPlist.strings */,
 				806260E91E5D19A7001F6256 /* Localizable.strings */,
 			);
 			name = "Supporting Files";
@@ -218,7 +238,9 @@
 		9AF6AB981B08927800FD07E6 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				806260F51E5D3F88001F6256 /* CircularCollectionViewLayout.swift */,
 				8068441B1E5AC0230092D526 /* QuickLookCollectionViewCell.swift */,
+				806260F71E5D5AE6001F6256 /* CustomCollectionViewFlowLayout.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -325,6 +347,7 @@
 				806260E71E5D19A7001F6256 /* Localizable.strings in Resources */,
 				9AF6AB6F1B0824C000FD07E6 /* LaunchScreen.xib in Resources */,
 				9AF6AB6C1B0824C000FD07E6 /* Images.xcassets in Resources */,
+				806260EE1E5D3BFE001F6256 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -390,7 +413,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8062610C1E5D80E1001F6256 /* CircularCollectionViewLayout.swift in Sources */,
 				9AF6AB901B0884C800FD07E6 /* DribbbleBase.swift in Sources */,
+				8062610B1E5D78B4001F6256 /* GradientSwitch.swift in Sources */,
 				8069CCF01E5C292900F50D40 /* LightLoomViewController.swift in Sources */,
 				8069CCEE1E5C094C00F50D40 /* Dispatch_Once.swift in Sources */,
 				9A0EBC311B0F4C10006FBD58 /* CAPSPageMenu.swift in Sources */,
@@ -405,6 +430,7 @@
 				8069CCEC1E5BD13500F50D40 /* QuickLookCollectionViewController.swift in Sources */,
 				9AF6AB971B0888BE00FD07E6 /* HttpService.swift in Sources */,
 				3F23892B62A0989FACE96DA9 /* DJRoundCorner.swift in Sources */,
+				806260F81E5D5AE6001F6256 /* CustomCollectionViewFlowLayout.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -435,6 +461,16 @@
 				806260EB1E5D19B7001F6256 /* Base */,
 			);
 			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		806260F01E5D3BFE001F6256 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				806260EF1E5D3BFE001F6256 /* en */,
+				806260F11E5D3C09001F6256 /* zh-Hans */,
+				806260F21E5D3C0A001F6256 /* Base */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 		9AF6AB6D1B0824C000FD07E6 /* LaunchScreen.xib */ = {

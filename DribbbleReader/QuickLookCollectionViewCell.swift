@@ -43,7 +43,7 @@ class QuickLookCollectionViewCell: UICollectionViewCell, MBProgressHUDDelegate {
             make.top.equalToSuperview()
             make.left.equalToSuperview()
             make.right.equalToSuperview()
-            make.height.lessThanOrEqualTo(self.bounds.height - 51)
+            make.bottom.lessThanOrEqualToSuperview().offset(-50)
         }
         
         self.contentView.addSubview(segmentView)
@@ -100,13 +100,12 @@ class QuickLookCollectionViewCell: UICollectionViewCell, MBProgressHUDDelegate {
         viewLabel.font = UIFont.init(name: "Verdana", size: 17)
         viewLabel.textColor = UIColor.cellLabelColor()
         viewLabel.snp.makeConstraints { (make) in
-            make.right.equalToSuperview().offset(-48)
+            make.right.equalTo(viewUnitLabel.snp.left).offset(-8)
             make.bottom.equalTo(viewUnitLabel.snp.bottom).offset(1)
         }
     }
     
     func setContent(shot: Shot)  {
-        
         //创建进度HUD
         let bigImgHUD = MBProgressHUD.showAdded(to: imageView, animated: true)
         bigImgHUD.bezelView.color = UIColor.clear
@@ -119,12 +118,13 @@ class QuickLookCollectionViewCell: UICollectionViewCell, MBProgressHUDDelegate {
         //创建透明色占位图
         let placeHolderImage = UIColor.clear.convertToImage(rect: CGRect.init(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 216))
         imageView.sd_setImage(with: URL(string: shot.imageUrl), placeholderImage: placeHolderImage!, options: [.retryFailed, .refreshCached], progress: { (receivedSize:Int, expectedSize:Int, url:URL?) in
-            DispatchQueue.main.async {//在子线程，需要回到主线程
                 if expectedSize != -1 && receivedSize != 0 {
                     //由于Swift的类型转化原因，直接整数相除再转为Float类型，值还是0。要两个Float类型相除，才能得到期望的值
-                    bigImgHUD.progress = Float(receivedSize)/Float(expectedSize)
+                    //这一步在子线程，需要切换到主线程
+                    DispatchQueue.main.async {
+                         bigImgHUD.progress = Float(receivedSize)/Float(expectedSize)
+                    }
                 }
-            }
         })
         { (_, _, _, _) in
             DispatchQueue.main.async {
@@ -137,7 +137,7 @@ class QuickLookCollectionViewCell: UICollectionViewCell, MBProgressHUDDelegate {
         designerName.text = shot.designerName
         viewLabel.text = String(shot.shotCount)
       
-        viewUnitLabel.text = "Views"
+        viewUnitLabel.text = "Views".getLocalizedString()
         
         //这一步一定要在最后做，确保遮罩在最上面
         self.contentView.dj_addCorner(radius: 3)
@@ -147,6 +147,21 @@ class QuickLookCollectionViewCell: UICollectionViewCell, MBProgressHUDDelegate {
         if !hud.isHidden {
             //MBProgreHUD有相当高的概率移除失败，这里判断一下，如果没有隐藏，用MBProgressHUD提供的类方法隐藏一下
             MBProgressHUD.hide(for: imageView, animated: true)
+        }
+    }
+    
+    override func apply(_ layoutAttributes: UICollectionViewLayoutAttributes) {
+        super.apply(layoutAttributes)
+        if layoutAttributes is CircularCollectionViewLayoutAttributes {
+            let circularlayoutAttributes = layoutAttributes as! CircularCollectionViewLayoutAttributes
+            self.layer.anchorPoint = circularlayoutAttributes.anchorPoint
+            self.center.y += (circularlayoutAttributes.anchorPoint.y - 0.5)*self.bounds.height
+            
+            imageView.snp.updateConstraints({ (make) in
+                make.bottom.lessThanOrEqualToSuperview().offset(0)
+            })
+            
+            downSideView.isHidden = true
         }
     }
 }

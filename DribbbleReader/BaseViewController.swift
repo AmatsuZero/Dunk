@@ -25,26 +25,29 @@ class BaseViewController: UIViewController {
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.isTranslucent = false
         
+//        let ctrl = GradientSwitch.init(frame: CGRect.init(x: 0, y: 0, width: 100, height: 40))
+//        self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(customView: ctrl)
+        
         let popularShot = QuickLookCollectionViewController()
-        popularShot.title = "Popular"
+        popularShot.title = "Popular".getLocalizedString()
         popularShot.API_URL = Config.POPULAR_URL
         popularShot.loadShots()
         controllerArray.append(popularShot)
         
         let gifShot = QuickLookCollectionViewController()
-        gifShot.title = "GIFs"
+        gifShot.title = "GIFs".getLocalizedString()
         gifShot.API_URL = Config.GIF_URL
         gifShot.loadShots()
         controllerArray.append(gifShot)
         
         let teamsShot = QuickLookCollectionViewController()
-        teamsShot.title = "Teams"
+        teamsShot.title = "Teams".getLocalizedString()
         teamsShot.API_URL = Config.TEAMS_URL
         teamsShot.loadShots()
         controllerArray.append(teamsShot)
         
         let reboundsShot = QuickLookCollectionViewController()
-        reboundsShot.title = "Rebounds"
+        reboundsShot.title = "Rebounds".getLocalizedString()
         reboundsShot.API_URL = Config.REBOUNDS_URL
         reboundsShot.loadShots()
         controllerArray.append(reboundsShot)
